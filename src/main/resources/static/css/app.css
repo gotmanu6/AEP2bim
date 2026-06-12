@@ -1,0 +1,204 @@
+:root {
+    --danger: #d71920;
+    --danger-dark: #a80f15;
+    --ink: #202124;
+    --muted: #6b7280;
+    --line: #d9dde3;
+    --surface: #ffffff;
+    --soft: #f4f7fb;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--ink);
+    background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-shell {
+    width: min(100%, 430px);
+    min-height: 100vh;
+    margin: 0 auto;
+    background: var(--surface);
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    padding: 14px 18px;
+    color: #ffffff;
+    background: var(--danger);
+}
+
+.top-bar a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.screen-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.content {
+    padding: 18px;
+}
+
+.location-box,
+.history-item,
+.phone-row,
+.emergency-card,
+.form-panel {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+}
+
+.location-box {
+    padding: 16px;
+}
+
+.map-preview {
+    display: grid;
+    min-height: 150px;
+    margin-top: 14px;
+    place-items: center;
+    border: 1px dashed #9ca3af;
+    border-radius: 8px;
+    background:
+            linear-gradient(90deg, rgba(215, 25, 32, .08) 1px, transparent 1px),
+            linear-gradient(rgba(31, 41, 55, .08) 1px, transparent 1px),
+            #f8fafc;
+    background-size: 32px 32px;
+}
+
+.urgent-button {
+    width: 100%;
+    min-height: 96px;
+    margin: 20px 0;
+    border: 0;
+    border-radius: 8px;
+    color: #ffffff;
+    background: var(--danger);
+    font-size: 1.35rem;
+    font-weight: 800;
+    box-shadow: 0 10px 20px rgba(215, 25, 32, .24);
+}
+
+.urgent-button:hover,
+.urgent-button:focus {
+    color: #ffffff;
+    background: var(--danger-dark);
+}
+
+.section-heading {
+    margin: 20px 0 10px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.history-item {
+    padding: 14px;
+    margin-bottom: 10px;
+}
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    color: #0f5132;
+    background: #d1e7dd;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.status-pill.open {
+    color: #842029;
+    background: #f8d7da;
+}
+
+.emergency-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.emergency-card {
+    width: 100%;
+    padding: 16px;
+    text-align: left;
+}
+
+.emergency-card.active,
+.emergency-card:hover {
+    border-color: var(--danger);
+    background: #fff5f5;
+}
+
+.emergency-icon {
+    display: inline-grid;
+    width: 46px;
+    height: 46px;
+    margin-right: 12px;
+    place-items: center;
+    border-radius: 8px;
+    color: #ffffff;
+    background: var(--danger);
+    font-size: 1.4rem;
+}
+
+.form-panel {
+    padding: 16px;
+    margin-top: 14px;
+    background: var(--soft);
+}
+
+.phone-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.phone-number {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--danger);
+}
+
+.bottom-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: var(--danger-dark);
+    border-color: var(--danger-dark);
+}
+
+@media (min-width: 768px) {
+    .app-shell {
+        min-height: calc(100vh - 32px);
+        margin: 16px auto;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+}

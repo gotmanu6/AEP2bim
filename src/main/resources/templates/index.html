@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" ng-app="emergenciaApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emergencia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+<main class="app-shell">
+    <header class="top-bar">
+        <h1 class="screen-title">Atendimento de Emergencia</h1>
+        <a th:href="@{/telefones}" aria-label="Telefones uteis"><i class="bi bi-telephone-fill"></i></a>
+    </header>
+
+    <section class="content">
+        <div class="location-box">
+            <div class="d-flex align-items-start justify-content-between gap-3">
+                <div>
+                    <p class="text-muted mb-1">Localizacao atual</p>
+                    <strong>Rua das Flores, 120 - Centro</strong>
+                </div>
+                <a class="btn btn-outline-danger btn-sm" th:href="@{/localizacao}">Editar</a>
+            </div>
+            <div class="map-preview">
+                <div class="text-center">
+                    <i class="bi bi-geo-alt-fill text-danger fs-1"></i>
+                    <p class="mb-0 fw-semibold">GPS ativo</p>
+                </div>
+            </div>
+        </div>
+
+        <a class="btn urgent-button d-flex align-items-center justify-content-center gap-2" th:href="@{/emergencia}">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+            Solicitar urgencia
+        </a>
+
+        <div class="d-flex align-items-center justify-content-between">
+            <h2 class="section-heading">Historico de chamados</h2>
+            <a class="small text-danger fw-semibold" th:href="@{/historico}">Ver todos</a>
+        </div>
+
+        <article class="history-item" th:each="chamado : ${ultimosChamados}">
+            <div class="d-flex justify-content-between gap-2">
+                <strong th:text="'#' + ${chamado.id} + ' - ' + ${chamado.tipo.titulo}">#1 - Emergencia</strong>
+                <span class="status-pill" th:classappend="${chamado.status == 'ABERTO'} ? ' open'" th:text="${chamado.status}">ABERTO</span>
+            </div>
+            <p class="mb-1 text-muted" th:text="${chamado.descricao}">Descricao</p>
+            <small th:text="${#temporals.format(chamado.dataHora, 'dd/MM/yyyy HH:mm')}">Data</small>
+        </article>
+    </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/angular@1.8.3/angular.min.js"></script>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>
